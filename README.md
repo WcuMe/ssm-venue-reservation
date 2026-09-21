@@ -1,5 +1,10 @@
 # 体育场馆预约系统（SSM + JSP）
 
+[![SSM CI](https://github.com/WcuMe/ssm-venue-reservation/actions/workflows/maven-ci.yml/badge.svg)](https://github.com/WcuMe/ssm-venue-reservation/actions/workflows/maven-ci.yml)
+![Java](https://img.shields.io/badge/Java-8-orange)
+![Spring](https://img.shields.io/badge/Spring-5.3.39-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-blue)
+
 基于 **Spring + SpringMVC + MyBatis** 三大框架开发的体育场馆预约系统，面向高校体育场馆的日常开放管理场景，实现**用户管理、场地管理、预约管理、分类管理、评价管理**五大功能模块。
 
 > 《SSM框架开发技术项目实战》课程考查大作业 · 2026～2027 学年度第一学期
