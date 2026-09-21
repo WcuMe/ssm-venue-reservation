@@ -1,0 +1,65 @@
+name: SSM CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    name: Maven Build & Unit Test
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: "123456"
+          MYSQL_ROOT_HOST: "%"
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -p123456"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 8
+        uses: actions/setup-java@v4
+        with:
+          java-version: '8'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Wait for MySQL ready
+        run: |
+          for i in $(seq 1 30); do
+            if mysqladmin ping -h 127.0.0.1 -P 3306 -uroot -p123456 --silent 2>/dev/null; then
+              echo "MySQL is ready"; exit 0
+            fi
+            echo "waiting for MySQL... ($i)"; sleep 2
+          done
+          echo "MySQL not ready in time"; exit 1
+
+      - name: Initialize database
+        run: mysql -h 127.0.0.1 -P 3306 -uroot -p123456 --default-character-set=utf8mb4 < sql/init.sql
+
+      - name: Verify database
+        run: |
+          mysql -h 127.0.0.1 -P 3306 -uroot -p123456 --default-character-set=utf8mb4 \
+            -e "USE venue_reservation; SHOW TABLES; SELECT COUNT(*) AS users FROM user; SELECT COUNT(*) AS venues FROM venue;"
+
+      - name: Build and run unit tests
+        run: mvn -B clean package
+        # package 会执行 src/test 下的全部 JUnit 测试（27 个），失败则 CI 红灯
+
+      - name: Upload war artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: venue-reservation-war
+          path: target/*.war

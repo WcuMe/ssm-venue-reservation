@@ -1,0 +1,25 @@
+# Maven 构建产物
+target/
+target-venues/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.classpath
+.project
+
+# macOS
+.DS_Store
+._*
+
+# 日志
+*.log
+logs/
+
+# 临时 md/html 中间产物（报告排版过程文件）
+docs/md/*.html
+docs/md/split_code.py
