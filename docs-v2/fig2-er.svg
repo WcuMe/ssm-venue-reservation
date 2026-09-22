@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="760" viewBox="0 0 1180 760" font-family="'PingFang SC','Microsoft YaHei','Helvetica Neue',Arial,sans-serif">
+  <defs>
+    <marker id="many" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,1 L10,6 L2,11" fill="none" stroke="#1e6fff" stroke-width="2"/>
+    </marker>
+    <marker id="one" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,1 L2,11" fill="none" stroke="#1e6fff" stroke-width="2"/>
+    </marker>
+  </defs>
+
+  <rect width="1180" height="760" fill="#ffffff"/>
+  <text x="590" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#0f4c9c">体育场馆预约系统 数据库 E-R 图</text>
+  <text x="590" y="66" text-anchor="middle" font-size="13" fill="#5a7bb0">5 个实体 · 5 张数据表 · 通过外键维护参照完整性</text>
+
+  <!-- ============ user 实体 ============ -->
+  <g>
+    <rect x="46" y="268" width="228" height="216" rx="9" fill="#ffffff" stroke="#1e6fff" stroke-width="2.5"/>
+    <rect x="46" y="268" width="228" height="38" rx="9" fill="#1e6fff"/>
+    <rect x="46" y="292" width="228" height="14" fill="#1e6fff"/>
+    <text x="160" y="294" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">user　用户</text>
+    <text x="64" y="328" font-size="12.5" fill="#0f4c9c" font-weight="700">PK  id</text>
+    <text x="64" y="350" font-size="12.5" fill="#334155">UK  username</text>
+    <text x="64" y="372" font-size="12.5" fill="#334155">　　 password</text>
+    <text x="64" y="394" font-size="12.5" fill="#334155">　　 real_name</text>
+    <text x="64" y="416" font-size="12.5" fill="#334155">　　 phone</text>
+    <text x="64" y="438" font-size="12.5" fill="#334155">　　 role</text>
+    <text x="64" y="460" font-size="12.5" fill="#334155">　　 status</text>
+  </g>
+
+  <!-- ============ reservation 实体 ============ -->
+  <g>
+    <rect x="406" y="104" width="264" height="252" rx="9" fill="#ffffff" stroke="#1e6fff" stroke-width="2.5"/>
+    <rect x="406" y="104" width="264" height="38" rx="9" fill="#1e6fff"/>
+    <rect x="406" y="128" width="264" height="14" fill="#1e6fff"/>
+    <text x="538" y="130" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">reservation　预约</text>
+    <text x="424" y="164" font-size="12.5" fill="#0f4c9c" font-weight="700">PK  id</text>
+    <text x="424" y="186" font-size="12.5" fill="#334155">UK  order_no</text>
+    <text x="424" y="208" font-size="12.5" fill="#c2410c" font-weight="600">FK  user_id</text>
+    <text x="424" y="230" font-size="12.5" fill="#c2410c" font-weight="600">FK  venue_id</text>
+    <text x="424" y="252" font-size="12.5" fill="#334155">　　 start_time</text>
+    <text x="424" y="274" font-size="12.5" fill="#334155">　　 end_time</text>
+    <text x="424" y="296" font-size="12.5" fill="#334155">　　 total_price</text>
+    <text x="424" y="318" font-size="12.5" fill="#334155">　　 status</text>
+    <text x="424" y="340" font-size="12.5" fill="#334155">　　 remark</text>
+  </g>
+
+  <!-- ============ review 实体 ============ -->
+  <g>
+    <rect x="406" y="452" width="264" height="206" rx="9" fill="#ffffff" stroke="#1e6fff" stroke-width="2.5"/>
+    <rect x="406" y="452" width="264" height="38" rx="9" fill="#1e6fff"/>
+    <rect x="406" y="476" width="264" height="14" fill="#1e6fff"/>
+    <text x="538" y="478" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">review　评价</text>
+    <text x="424" y="512" font-size="12.5" fill="#0f4c9c" font-weight="700">PK  id</text>
+    <text x="424" y="534" font-size="12.5" fill="#c2410c" font-weight="600">FK  user_id</text>
+    <text x="424" y="556" font-size="12.5" fill="#c2410c" font-weight="600">FK  venue_id</text>
+    <text x="424" y="578" font-size="12.5" fill="#334155">FK  reservation_id</text>
+    <text x="424" y="600" font-size="12.5" fill="#334155">　　 rating</text>
+    <text x="424" y="622" font-size="12.5" fill="#334155">　　 content</text>
+    <text x="424" y="646" font-size="11.5" fill="#94a3b8" font-style="italic">reservation_id 可空，用于关联实际消费记录</text>
+  </g>
+
+  <!-- ============ venue 实体 ============ -->
+  <g>
+    <rect x="822" y="196" width="300" height="298" rx="9" fill="#ffffff" stroke="#0f4c9c" stroke-width="2.5"/>
+    <rect x="822" y="196" width="300" height="38" rx="9" fill="#0f4c9c"/>
+    <rect x="822" y="220" width="300" height="14" fill="#0f4c9c"/>
+    <text x="972" y="222" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">venue　场地</text>
+    <text x="840" y="256" font-size="12.5" fill="#0f4c9c" font-weight="700">PK  id</text>
+    <text x="840" y="278" font-size="12.5" fill="#334155">　　 name</text>
+    <text x="840" y="300" font-size="12.5" fill="#c2410c" font-weight="600">FK  category_id</text>
+    <text x="840" y="322" font-size="12.5" fill="#334155">　　 location</text>
+    <text x="840" y="344" font-size="12.5" fill="#334155">　　 capacity</text>
+    <text x="840" y="366" font-size="12.5" fill="#334155">　　 price_per_hour</text>
+    <text x="840" y="388" font-size="12.5" fill="#334155">　　 description</text>
+    <text x="840" y="410" font-size="12.5" fill="#334155">　　 image_url</text>
+    <text x="840" y="432" font-size="12.5" fill="#334155">　　 status</text>
+    <text x="840" y="462" font-size="11.5" fill="#a16207" font-style="italic">※ avg_rating / review_count</text>
+    <text x="840" y="480" font-size="11.5" fill="#a16207" font-style="italic">　 为关联查询字段，非物理列</text>
+  </g>
+
+  <!-- ============ category 实体 ============ -->
+  <g>
+    <rect x="822" y="544" width="300" height="160" rx="9" fill="#ffffff" stroke="#0f4c9c" stroke-width="2.5"/>
+    <rect x="822" y="544" width="300" height="38" rx="9" fill="#0f4c9c"/>
+    <rect x="822" y="568" width="300" height="14" fill="#0f4c9c"/>
+    <text x="972" y="570" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">category　分类</text>
+    <text x="840" y="604" font-size="12.5" fill="#0f4c9c" font-weight="700">PK  id</text>
+    <text x="840" y="626" font-size="12.5" fill="#334155">　　 name</text>
+    <text x="840" y="648" font-size="12.5" fill="#334155">　　 description</text>
+    <text x="840" y="670" font-size="12.5" fill="#334155">　　 sort_order</text>
+  </g>
+
+  <!-- ============ 关系连线 ============ -->
+  <!-- user → reservation（提交 1:n） -->
+  <path d="M274 320 L336 320 L336 208 L400 208" fill="none" stroke="#1e6fff" stroke-width="2.2" marker-end="url(#many)"/>
+  <circle cx="280" cy="320" r="4" fill="#1e6fff"/>
+  <rect x="284" y="252" width="76" height="24" rx="12" fill="#eef4ff" stroke="#c7dbff"/>
+  <text x="322" y="269" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0f4c9c">1 : n 提交</text>
+
+  <!-- user → review（发表 1:n） -->
+  <path d="M274 440 L336 440 L336 556 L400 556" fill="none" stroke="#1e6fff" stroke-width="2.2" marker-end="url(#many)"/>
+  <circle cx="280" cy="440" r="4" fill="#1e6fff"/>
+  <rect x="284" y="472" width="76" height="24" rx="12" fill="#eef4ff" stroke="#c7dbff"/>
+  <text x="322" y="489" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0f4c9c">1 : n 发表</text>
+
+  <!-- reservation → venue（预约 n:1） -->
+  <path d="M670 208 L752 208 L752 320 L816 320" fill="none" stroke="#1e6fff" stroke-width="2.2" marker-end="url(#one)"/>
+  <rect x="676" y="252" width="84" height="24" rx="12" fill="#eef4ff" stroke="#c7dbff"/>
+  <text x="718" y="269" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0f4c9c">n : 1 预约</text>
+
+  <!-- review → venue（评价 n:1） -->
+  <path d="M670 556 L752 556 L752 440 L816 440" fill="none" stroke="#1e6fff" stroke-width="2.2" marker-end="url(#one)"/>
+  <rect x="676" y="472" width="84" height="24" rx="12" fill="#eef4ff" stroke="#c7dbff"/>
+  <text x="718" y="489" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0f4c9c">n : 1 评价</text>
+
+  <!-- venue → category（归属 n:1） -->
+  <path d="M972 494 L972 538" fill="none" stroke="#0f4c9c" stroke-width="2.2" marker-end="url(#one)"/>
+  <rect x="988" y="502" width="84" height="24" rx="12" fill="#eef4ff" stroke="#c7dbff"/>
+  <text x="1030" y="519" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0f4c9c">n : 1 归属</text>
+
+  <!-- 图例 -->
+  <rect x="46" y="528" width="316" height="128" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="5 4"/>
+  <text x="64" y="554" font-size="13" font-weight="700" fill="#334155">图例</text>
+  <text x="64" y="578" font-size="12" fill="#0f4c9c" font-weight="700">PK</text>
+  <text x="98" y="578" font-size="12" fill="#475569">主键（自增 BIGINT）</text>
+  <text x="64" y="600" font-size="12" fill="#c2410c" font-weight="700">FK</text>
+  <text x="98" y="600" font-size="12" fill="#475569">外键（约束参照完整性）</text>
+  <text x="64" y="622" font-size="12" fill="#334155" font-weight="700">UK</text>
+  <text x="98" y="622" font-size="12" fill="#475569">唯一索引</text>
+  <text x="64" y="644" font-size="12" fill="#475569">字符集 utf8mb4 / 排序规则 utf8mb4_unicode_ci</text>
+</svg>

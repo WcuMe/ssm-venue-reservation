@@ -79,8 +79,10 @@ public class VenueModuleTest {
     @Test
     public void testVenueSearchByKeyword() {
         List<Venue> venues = venueService.listOpen(null, "游泳");
-        assertEquals("搜索'游泳'应只返回恒温游泳馆", 1, venues.size());
-        assertEquals("恒温游泳馆", venues.get(0).getName());
+        // 断言搜索结果与关键词一致，不依赖具体数据条数（便于后续扩充演示数据）
+        assertTrue("搜索'游泳'应至少返回一条场地", venues.size() >= 1);
+        venues.forEach(v -> assertTrue("结果名称应包含关键词'游泳'",
+                v.getName().contains("游泳")));
     }
 
     /** 测试：场地详情带平均评分 */
